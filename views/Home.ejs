@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+    <%- include('./partials/head.ejs') %>
+
+    <body>
+
+        <%- include('./partials/nav.ejs') %>
+
+        <div class="ml-4 mt-2"><h2>Welcome, <%= name %></h2></div>
+
+        <div class="container pt-4" style="position: relative; top: 80px;">
+            <form method="Post">
+                <div class="alert" style="visibility: hidden;"><%= errormessage %><%= success %></div>
+                <div class="form-row">
+                    <div class="col-md-1">
+                        <h4 class="m-2">URL :</h4>
+                    </div>
+                    <div class="col-md-11">
+                        <div class="form-group">
+                            <input class="form-control" name="url" type="url" placeholder="Enter URL" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row justify-content-center">
+                    <button class="btn btn-primary" type="submit">Short Url</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="status" style="display: none;"><%= errormessage %></div>
+        <div id="success" style="display: none;"><%= success %></div>
+    </body>
+
+    <script>
+        const x = document.getElementById('status').innerHTML;
+        const y = document.getElementById('success').innerHTML;
+        const z = document.getElementsByClassName('alert');
+
+        if (x != ''){
+            z[0].setAttribute('class', 'alert alert-warning');
+			z[0].style.visibility = 'visible'
+            setTimeout(()=>{z[0].style.visibility = 'hidden'}, 5000);
+		};
+
+        
+        if (y != ''){
+            z[0].setAttribute('class', 'alert alert-success');
+            z[0].style.visibility = 'visible'
+            setTimeout(()=>{z[0].style.visibility = 'hidden'}, 5000);
+        }
+    </script>
+</html>

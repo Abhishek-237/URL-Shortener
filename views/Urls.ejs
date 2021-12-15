@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+    <%- include('./partials/head.ejs') %>
+
+    <body>
+
+        <%- include('./partials/nav.ejs') %>
+
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th>URL</th>
+                        <th>Short URL</th>
+                        <th>Created On</th>
+                        <th>Valid Till</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(result.length > 0){ %>
+                    <% result.forEach( (value) => { %>
+                    <tr>
+                        <td><%= value.URL %></td>
+                        <td><a href="<%= value.ShortURL %>" target='_blank'><%= value.ShortURL %></a></td>
+                        <td><%= value.CreatedOn %></td>
+                        <td>1 minute</td>
+                        <td><%= value.Count %></td>
+                    </tr> 
+                    <% })} %>
+                </tbody>
+            </table>
+
+            <div id="status" style="display: none;"><%= errormessage %></div>
+    </body>
+
+    <script>
+        const x = document.getElementById("status").innerHTML;
+		if (x != ''){
+			alert(x);
+		}
+    </script>
+</html>

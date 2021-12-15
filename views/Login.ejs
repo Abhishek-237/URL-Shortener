@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<%- include('./partials/head.ejs') %>
+
+	<body style="background-color: whitesmoke;">
+
+		<div class="d-flex justify-content-center mt-5">			
+			<form method="POST" class="col-3  mt-5 bg-white" style="border: 1px solid rgb(212, 199, 199); border-radius: 5px">
+				<h2 class="my-5 text-center">URL Shortener</h2>
+				<div class="alert alert-danger" style="display: none;">
+					<!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
+					<%= errormessage %>
+				</div>
+				<div class="form-group">
+					<input type="email" class="form-control" placeholder="Email" name="email" required/>
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" placeholder="Password" name="password" 
+					maxlength="20" required/>
+				</div>
+				<button type="submit" class="btn btn-primary btn-block">Login</button>
+				<div class="text-center mb-5 mt-4">
+					<a href="#">Forgot Password?</a>
+				</div>
+			</form>
+		</div>
+
+		<div class="d-flex justify-content-center">
+			<div class="col-3 text-center my-2">OR</div>
+		</div>
+
+		<div class="d-flex justify-content-center ">
+			<div class="col-3 justify-content-center bg-white"
+				style="border: 1px solid rgb(212, 199, 199); border-radius: 5px">
+				<div class="text-center m-3 p-2">Don't have an account? <a href="Signup">Sign up</a></div>
+			</div>
+		</div>		
+
+		<div id="status" style="display: none;"><%= errormessage %></div>
+		
+	</body>
+
+	<script>
+		const x = document.getElementById("status").innerHTML;
+		const y = document.getElementsByClassName('alert')[0];
+
+        if (x != ''){
+            y.style.display = 'block'
+            setTimeout(()=>{y.style.display = 'none'}, 5000);
+        }
+	</script>
+</html>
